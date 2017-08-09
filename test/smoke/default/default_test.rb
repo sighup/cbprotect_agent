@@ -1,18 +1,32 @@
 # # encoding: utf-8
 
-# Inspec test for recipe cbprotect::default
+# Inspec test for recipe
 
-# The Inspec reference, with examples and extensive documentation, can be
-# found at http://inspec.io/docs/reference/resources/
+packages = []
+services = []
 
-unless os.windows?
-  # This is an example test, replace with your own test.
-  describe user('root'), :skip do
-    it { should exist }
+redhat = {package_name: "b9agent", service_name: "b9daemon"}
+windows = {package_name: "Cb Protection Agent", service_name: "Cb Protection Agent"}
+
+case os[:family]
+when 'redhat'
+  packages << redhat[:package_name]
+  services << redhat[:service_name]
+when 'windows'
+  packages << windows[:package_name]
+  services << windows[:service_name]
+end
+
+packages.each do |pkg|
+  describe package(pkg) do
+    it { should be_installed }
   end
 end
 
-# This is an example test, replace it with your own test.
-describe port(80), :skip do
-  it { should_not be_listening }
+services.each do |svc|
+  describe service(svc) do
+    it { should be_installed }
+    it { should be_enabled }
+    it { should be_running }
+  end
 end
