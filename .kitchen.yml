@@ -31,7 +31,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[cbprotect::default]
+      - recipe[cbprotect_agent::default]
     verifier:
       inspec_tests:
       - test/smoke/default
