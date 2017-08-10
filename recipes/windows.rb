@@ -1,6 +1,6 @@
 windows_package 'CbProtect' do
   action :install
-  source node['cbprotection']['source_url']
+  source node['cbprotect_agent']['source_url']
   installer_type :msi
   remote_file_attributes ({
     path: File.join(Chef::Config[:file_cache_path], 'CbProtection.msi')

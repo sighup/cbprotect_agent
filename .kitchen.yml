@@ -7,6 +7,7 @@ driver:
  
 provisioner:
   name: chef_zero
+  always_update_cookbooks: true
   deprecations_as_errors: true
   client_rb:
     ssl_verify_mode: :verify_none
@@ -36,3 +37,7 @@ suites:
       inspec_tests:
       - test/smoke/default
       attributes:
+  - name: remove
+    run_list:
+      - recipe[cbprotect_agent::default]
+      - recipe[cbprotect_agent::remove]

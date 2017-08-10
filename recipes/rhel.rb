@@ -1,7 +1,7 @@
 cbprotect_pkg = File.join(Chef::Config[:file_cache_path], 'CbProtection.tgz')
 
 remote_file 'CbProtect' do
-  source node['cbprotection']['source_url']
+  source node['cbprotect_agent']['source_url']
   path File.join(Chef::Config[:file_cache_path], 'CbProtection.tgz')
 end
 
