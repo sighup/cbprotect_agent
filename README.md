@@ -21,8 +21,8 @@ Tests are configured for the following:
 
 The following platforms have been tested with Test Kitchen:
 
-Windows 2012 R2
-CentOS 6.7
+Windows 2012 R2  
+CentOS 6.7  
 
 ## Attributes
 
